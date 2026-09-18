@@ -483,6 +483,27 @@ h3 { letter-spacing: -.02em; }
 .proj svg { grid-row: 1 / 3; }
 .proj .price { grid-column: 2; }
 .proj.sel { outline: 2px solid var(--moss); outline-offset: -2px; background: rgba(45,107,76,.09); }
+.projects { grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: stretch; }
+.proj { display: flex; flex-direction: column; align-items: stretch; gap: 9px; padding: 7px; overflow: hidden; }
+.proj__thumb { width: 100%; height: 112px; display: block; object-fit: cover; border-radius: 5px; filter: saturate(.9) contrast(1.02); transition: transform .35s ease, filter .25s ease; }
+.proj:hover .proj__thumb { transform: scale(1.025); filter: saturate(1) contrast(1.04); }
+.proj > div:not(.price) { padding-inline: 4px; }
+.proj .meta { display: none; }
+.proj .price { width: 100%; padding: 0 4px 5px; margin-top: auto; }
+.project-showcase { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(250px, .75fr); min-height: 315px; margin-top: 12px; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.3); }
+.project-showcase__media { min-height: 315px; overflow: hidden; background: #d4d5cb; }
+.project-showcase__media img { width: 100%; height: 100%; min-height: 315px; display: block; object-fit: cover; transition: opacity .18s ease, transform .45s ease; }
+.project-showcase__body { display: flex; flex-direction: column; padding: 20px; }
+.project-showcase__eyebrow { margin: 0 0 7px; font: 700 10px/1.3 ui-monospace, monospace; letter-spacing: .13em; text-transform: uppercase; color: var(--amber-d); }
+.project-showcase h3 { margin: 0 0 9px; font: 700 27px/1.05 Iowan Old Style, Baskerville, Georgia, serif; }
+.project-showcase__body > p:not(.project-showcase__eyebrow) { margin: 0; font-size: 13px; color: var(--ink-2); }
+.project-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; margin: 15px 0; border-top: 1px solid var(--line); }
+.project-facts div { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.project-facts dt { font: 600 9px/1.2 ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.project-facts dd { margin: 3px 0 0; font-weight: 700; }
+.project-actions { margin-top: auto; }
+.project-actions .btn { width: 100%; }
+.proj[aria-selected="true"] { border-color: var(--moss); box-shadow: inset 0 -3px var(--moss); }
 .calc__out { border-radius: 7px; background: linear-gradient(135deg, #173f2d, #2d6b4c 62%, #3d7857); }
 .seg, .seg button, select, .opt, .field input, .field textarea { border-radius: 6px; }
 .rev p { font-family: Iowan Old Style, Baskerville, Georgia, serif; font-size: 18px; }
@@ -518,7 +539,10 @@ h3 { letter-spacing: -.02em; }
   .hero-proof div, .hero-proof div + div { padding: 10px 0; border-left: 0; }
   .hero-proof div + div { border-top: 1px solid var(--line); }
   .scroll-cue { display: none; }
-  .projects { grid-template-columns: 1fr; }
+  .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .proj__thumb { height: 100px; }
+  .project-showcase { grid-template-columns: 1fr; }
+  .project-showcase__media, .project-showcase__media img { min-height: 230px; }
   #fundament .col, #etapy .col, #finans .col { margin-left: auto; margin-right: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .scroll-cue i { animation: none; } }
@@ -698,27 +722,42 @@ h3 { letter-spacing: -.02em; }
         <p class="kicker">стропила, двускатная кровля</p>
         <h2>Четыре типовых проекта</h2>
         <p class="lead">Нажмите на проект — он подставится в калькулятор. Планировки меняются: у нас 60 % домов идут по своей схеме.</p>
-        <div class="projects">
-          <button class="proj" type="button" data-area="45" data-floors="1" data-pack="teply">
-            <svg viewBox="0 0 96 70" role="img" aria-label="Таёжный 45: четыре модуля, один свет, двускатная кровля"><polygon points="44.3,24.8 90.4,47.9 48.7,68.7 2.6,45.7" fill="#CFD8C6" opacity="1"/><polygon points="14.5,42.1 51.7,60.7 81.5,45.8 44.3,27.2" fill="#C6C2B6" opacity="1"/><polygon points="14.5,43.2 51.7,61.8 51.7,60.7 14.5,42.1" fill="#B6B2A6" opacity="1"/><polygon points="81.5,46.9 51.7,61.8 51.7,60.7 81.5,45.8" fill="#9A968B" opacity="1"/><polygon points="14.5,42.1 51.7,60.7 51.7,47.9 14.5,29.3" fill="#C89F69" opacity="1"/><polygon points="81.5,45.8 51.7,60.7 51.7,47.9 81.5,33.0" fill="#A9814F" opacity="1"/><polygon points="23.9,46.8 23.9,34.0" fill="#B18A5B" opacity="1"/><polygon points="33.4,51.5 33.4,38.7" fill="#B18A5B" opacity="1"/><polygon points="42.8,56.2 42.8,43.4" fill="#B18A5B" opacity="1"/><polygon points="17.2,40.6 23.4,43.7 23.4,37.5 17.2,34.4" fill="#F2EFE7" opacity="1"/><polygon points="17.6,40.4 22.8,42.9 22.8,37.8 17.6,35.3" fill="#233440" opacity="1"/><polygon points="26.6,45.3 32.8,48.4 32.8,42.2 26.6,39.1" fill="#F2EFE7" opacity="1"/><polygon points="27.1,45.1 32.2,47.6 32.2,42.5 27.1,40.0" fill="#233440" opacity="1"/><polygon points="36.0,50.0 42.2,53.1 42.2,46.9 36.0,43.8" fill="#F2EFE7" opacity="1"/><polygon points="36.5,49.8 41.6,52.4 41.6,47.2 36.5,44.7" fill="#233440" opacity="1"/><polygon points="44.2,57.0 48.9,59.4 48.9,49.6 44.2,47.2" fill="#2E4038" opacity="1"/><polygon points="44.0,13.3 85.2,33.9 68.6,35.0 27.4,14.4" fill="#55665E" opacity="1"/><polygon points="10.1,30.3 51.2,50.9 68.6,35.0 27.4,14.4" fill="#37474A" opacity="1"/><polygon points="51.2,50.9 68.6,35.0 85.2,33.9 85.2,33.9" fill="#2E3C3A" opacity="1"/><polygon points="27.4,14.4 68.6,35.0 68.6,34.1 27.4,13.5" fill="#6F8078" opacity="1"/><polygon points="33.1,56.1 45.3,62.2 50.0,59.8 37.8,53.7" fill="#CBB389" opacity="1"/><polygon points="33.1,57.2 45.3,63.3 45.3,62.2 33.1,56.1" fill="#B79A6A" opacity="1"/><polygon points="50.0,60.9 45.3,63.3 45.3,62.2 50.0,59.8" fill="#9A7F55" opacity="1"/><polygon points="33.4,56.2 45.3,62.2 45.3,61.8 33.4,55.8" fill="#8E7549" opacity="1"/></svg>
+        <div class="projects" role="tablist" aria-label="Выбор проекта дома">
+          <button class="proj sel" type="button" role="tab" aria-selected="true" aria-controls="project-details" data-key="taezhny" data-area="45" data-floors="1" data-pack="teply">
+            <img class="proj__thumb" src="assets/projects/taezhny-45.jpg" alt="Таёжный 45 — модульный дом с крытой террасой" loading="lazy" width="360" height="240">
             <div><span class="tag">4 модуля</span><h3>Таёжный 45</h3><p class="meta">1 спальня, санузел, терраса 12 м², монтаж 1 день</p></div>
             <div class="price">3,56 млн ₽<i>от, тёплый контур</i></div>
           </button>
-          <button class="proj" type="button" data-area="68" data-floors="1" data-pack="komf">
-            <svg viewBox="0 0 96 70" role="img" aria-label="Кедровый 68: один свет, панорамное окно, двускатная кровля"><polygon points="43.0,22.4 92.5,47.2 50.4,68.3 0.8,43.5" fill="#CFD8C6" opacity="1"/><polygon points="11.4,40.3 53.0,61.2 84.6,45.4 43.0,24.5" fill="#C6C2B6" opacity="1"/><polygon points="11.4,41.3 53.0,62.1 53.0,61.2 11.4,40.3" fill="#B6B2A6" opacity="1"/><polygon points="84.6,46.3 53.0,62.1 53.0,61.2 84.6,45.4" fill="#9A968B" opacity="1"/><polygon points="11.4,40.3 53.0,61.2 53.0,49.9 11.4,29.0" fill="#C89F69" opacity="1"/><polygon points="84.6,45.4 53.0,61.2 53.0,49.9 84.6,34.1" fill="#A9814F" opacity="1"/><polygon points="19.7,44.5 19.7,33.2" fill="#B18A5B" opacity="1"/><polygon points="28.0,48.7 28.0,37.4" fill="#B18A5B" opacity="1"/><polygon points="36.4,52.8 36.4,41.5" fill="#B18A5B" opacity="1"/><polygon points="44.7,57.0 44.7,45.7" fill="#B18A5B" opacity="1"/><polygon points="13.7,39.0 19.2,41.8 19.2,36.3 13.7,33.6" fill="#F2EFE7" opacity="1"/><polygon points="14.1,38.8 18.6,41.1 18.6,36.6 14.1,34.3" fill="#233440" opacity="1"/><polygon points="22.0,43.2 27.5,46.0 27.5,40.5 22.0,37.7" fill="#F2EFE7" opacity="1"/><polygon points="22.5,43.0 27.0,45.3 27.0,40.7 22.5,38.5" fill="#233440" opacity="1"/><polygon points="30.4,47.4 35.8,50.1 35.8,44.6 30.4,41.9" fill="#F2EFE7" opacity="1"/><polygon points="30.8,47.2 35.3,49.4 35.3,44.9 30.8,42.6" fill="#233440" opacity="1"/><polygon points="38.7,51.5 44.2,54.3 44.2,48.8 38.7,46.1" fill="#F2EFE7" opacity="1"/><polygon points="39.1,51.3 43.7,53.6 43.7,49.1 39.1,46.8" fill="#233440" opacity="1"/><polygon points="46.4,57.9 50.5,60.0 50.5,51.3 46.4,49.2" fill="#2E4038" opacity="1"/><polygon points="42.7,12.2 87.9,34.8 70.6,37.1 25.4,14.5" fill="#55665E" opacity="1"/><polygon points="7.4,29.9 52.6,52.5 70.6,37.1 25.4,14.5" fill="#37474A" opacity="1"/><polygon points="52.6,52.5 70.6,37.1 87.9,34.8 87.9,34.8" fill="#2E3C3A" opacity="1"/><polygon points="25.4,14.5 70.6,37.1 70.6,36.3 25.4,13.7" fill="#6F8078" opacity="1"/><polygon points="36.6,57.1 47.3,62.5 51.5,60.4 40.8,55.0" fill="#CBB389" opacity="1"/><polygon points="36.6,58.1 47.3,63.5 47.3,62.5 36.6,57.1" fill="#B79A6A" opacity="1"/><polygon points="51.5,61.4 47.3,63.5 47.3,62.5 51.5,60.4" fill="#9A7F55" opacity="1"/><polygon points="36.8,57.2 47.3,62.5 47.3,62.1 36.8,56.9" fill="#8E7549" opacity="1"/></svg>
+          <button class="proj" type="button" role="tab" aria-selected="false" aria-controls="project-details" data-key="kedrovy" data-area="68" data-floors="1" data-pack="komf">
+            <img class="proj__thumb" src="assets/projects/kedrovy-68.jpg" alt="Кедровый 68 — дом с просторной перголой" loading="lazy" width="360" height="240">
             <div><span class="tag">хит</span><h3>Кедровый 68</h3><p class="meta">2 спальни, камин, панорамное окно 3,4 м, терраса 18 м²</p></div>
             <div class="price">5,37 млн ₽<i>от, комфорт</i></div>
           </button>
-          <button class="proj" type="button" data-area="96" data-floors="2" data-pack="podkl">
-            <svg viewBox="0 0 112 84" role="img" aria-label="Еловый 96: два света, двускатная кровля, терраса"><polygon points="50.9,40.6 96.7,63.5 58.0,82.8 12.3,59.9" fill="#CFD8C6" opacity="1"/><polygon points="24.5,56.3 61.1,74.6 87.5,61.4 50.9,43.1" fill="#C6C2B6" opacity="1"/><polygon points="24.5,57.4 61.1,75.7 61.1,74.6 24.5,56.3" fill="#B6B2A6" opacity="1"/><polygon points="87.5,62.5 61.1,75.7 61.1,74.6 87.5,61.4" fill="#9A968B" opacity="1"/><polygon points="24.5,56.3 61.1,74.6 61.1,61.5 24.5,43.2" fill="#C89F69" opacity="1"/><polygon points="87.5,61.4 61.1,74.6 61.1,61.5 87.5,48.2" fill="#A9814F" opacity="1"/><polygon points="33.6,60.8 33.6,47.7" fill="#B18A5B" opacity="1"/><polygon points="42.8,65.4 42.8,52.3" fill="#B18A5B" opacity="1"/><polygon points="51.9,70.0 51.9,56.9" fill="#B18A5B" opacity="1"/><polygon points="27.2,54.8 33.5,57.9 33.5,51.6 27.2,48.4" fill="#F2EFE7" opacity="1"/><polygon points="27.7,54.5 32.9,57.1 32.9,51.9 27.7,49.3" fill="#233440" opacity="1"/><polygon points="36.8,59.6 43.2,62.8 43.2,56.4 36.8,53.2" fill="#F2EFE7" opacity="1"/><polygon points="37.3,59.3 42.6,62.0 42.6,56.7 37.3,54.1" fill="#233440" opacity="1"/><polygon points="46.5,64.4 52.8,67.6 52.8,61.3 46.5,58.1" fill="#F2EFE7" opacity="1"/><polygon points="47.0,64.2 52.2,66.8 52.2,61.6 47.0,58.9" fill="#233440" opacity="1"/><polygon points="53.4,70.8 58.2,73.2 58.2,63.2 53.4,60.7" fill="#2E4038" opacity="1"/><polygon points="24.5,43.2 61.1,61.5 61.1,46.2 24.5,27.9" fill="#2E4038" opacity="1"/><polygon points="87.5,48.2 61.1,61.5 61.1,46.2 87.5,33.0" fill="#223029" opacity="1"/><polygon points="24.5,43.2 24.5,27.9" fill="#243329" opacity="1"/><polygon points="26.8,44.3 26.8,29.0" fill="#243329" opacity="1"/><polygon points="29.1,45.4 29.1,30.2" fill="#243329" opacity="1"/><polygon points="31.3,46.6 31.3,31.3" fill="#243329" opacity="1"/><polygon points="33.6,47.7 33.6,32.5" fill="#243329" opacity="1"/><polygon points="35.9,48.9 35.9,33.6" fill="#243329" opacity="1"/><polygon points="38.2,50.0 38.2,34.8" fill="#243329" opacity="1"/><polygon points="40.5,51.2 40.5,35.9" fill="#243329" opacity="1"/><polygon points="27.9,42.2 35.6,46.0 35.6,35.3 27.9,31.5" fill="#F2EFE7" opacity="1"/><polygon points="28.4,42.0 35.0,45.3 35.0,35.6 28.4,32.3" fill="#233440" opacity="1"/><polygon points="37.6,47.0 45.2,50.8 45.2,40.2 37.6,36.3" fill="#F2EFE7" opacity="1"/><polygon points="38.1,46.8 44.7,50.1 44.7,40.4 38.1,37.1" fill="#233440" opacity="1"/><polygon points="45.2,50.8 55.9,56.2 55.9,45.5 45.2,40.2" fill="#F2EFE7" opacity="1"/><polygon points="45.7,50.6 55.3,55.4 55.3,45.8 45.7,40.9" fill="#233440" opacity="1"/><polygon points="50.7,13.5 91.3,33.9 76.3,34.0 35.7,13.7" fill="#55665E" opacity="1"/><polygon points="19.9,28.9 60.6,49.3 76.3,34.0 35.7,13.7" fill="#37474A" opacity="1"/><polygon points="60.6,49.3 76.3,34.0 91.3,33.9 91.3,33.9" fill="#2E3C3A" opacity="1"/><polygon points="35.7,13.7 76.3,34.0 76.3,33.1 35.7,12.7" fill="#6F8078" opacity="1"/><polygon points="42.0,69.9 54.5,76.1 59.3,73.7 46.8,67.5" fill="#CBB389" opacity="1"/><polygon points="42.0,71.0 54.5,77.2 54.5,76.1 42.0,69.9" fill="#B79A6A" opacity="1"/><polygon points="59.3,74.8 54.5,77.2 54.5,76.1 59.3,73.7" fill="#9A7F55" opacity="1"/><polygon points="42.3,70.0 54.5,76.1 54.5,75.7 42.3,69.6" fill="#8E7549" opacity="1"/><polygon points="41.0,59.3 54.5,66.0 59.3,62.7 45.8,56.0" fill="#4E605A" opacity="1"/><polygon points="41.8,69.5 42.7,70.0 42.7,59.4 41.8,58.9" fill="#5F7365" opacity="1"/><polygon points="54.3,75.7 55.2,76.2 55.2,65.6 54.3,65.2" fill="#5F7365" opacity="1"/></svg>
+          <button class="proj" type="button" role="tab" aria-selected="false" aria-controls="project-details" data-key="elovy" data-area="96" data-floors="2" data-pack="podkl">
+            <img class="proj__thumb" src="assets/projects/elovy-96.jpg" alt="Еловый 96 — дом с большой террасой" loading="lazy" width="360" height="240">
             <div><span class="tag">как на этом сайте</span><h3>Еловый 96</h3><p class="meta">3 спальни, 2 санузла, терраса 16 м², двускатная кровля</p></div>
             <div class="price">7,58 млн ₽<i>от, под ключ</i></div>
           </button>
-          <button class="proj" type="button" data-area="120" data-floors="2" data-pack="maxi">
-            <svg viewBox="0 0 96 70" role="img" aria-label="Сосновый 120: шесть модулей, два света, двускатная кровля"><polygon points="43.5,30.9 83.8,51.0 50.2,67.8 9.9,47.7" fill="#CFD8C6" opacity="1"/><polygon points="18.9,45.0 52.5,61.8 77.1,49.4 43.5,32.7" fill="#C6C2B6" opacity="1"/><polygon points="18.9,45.8 52.5,62.6 52.5,61.8 18.9,45.0" fill="#B6B2A6" opacity="1"/><polygon points="77.1,50.3 52.5,62.6 52.5,61.8 77.1,49.4" fill="#9A968B" opacity="1"/><polygon points="18.9,45.0 52.5,61.8 52.5,52.1 18.9,35.3" fill="#C89F69" opacity="1"/><polygon points="77.1,49.4 52.5,61.8 52.5,52.1 77.1,39.8" fill="#A9814F" opacity="1"/><polygon points="24.5,47.8 24.5,38.1" fill="#B18A5B" opacity="1"/><polygon points="30.1,50.6 30.1,40.9" fill="#B18A5B" opacity="1"/><polygon points="35.7,53.4 35.7,43.7" fill="#B18A5B" opacity="1"/><polygon points="41.3,56.2 41.3,46.5" fill="#B18A5B" opacity="1"/><polygon points="46.9,59.0 46.9,49.3" fill="#B18A5B" opacity="1"/><polygon points="20.9,43.9 25.5,46.2 25.5,41.5 20.9,39.2" fill="#F2EFE7" opacity="1"/><polygon points="21.2,43.7 25.1,45.6 25.1,41.8 21.2,39.8" fill="#233440" opacity="1"/><polygon points="28.0,47.4 32.6,49.7 32.6,45.1 28.0,42.7" fill="#F2EFE7" opacity="1"/><polygon points="28.3,47.2 32.2,49.1 32.2,45.3 28.3,43.4" fill="#233440" opacity="1"/><polygon points="35.1,51.0 39.7,53.3 39.7,48.6 35.1,46.3" fill="#F2EFE7" opacity="1"/><polygon points="35.4,50.8 39.3,52.7 39.3,48.8 35.4,46.9" fill="#233440" opacity="1"/><polygon points="42.1,54.5 46.8,56.8 46.8,52.2 42.1,49.8" fill="#F2EFE7" opacity="1"/><polygon points="42.5,54.3 46.4,56.2 46.4,52.4 42.5,50.5" fill="#233440" opacity="1"/><polygon points="46.8,59.0 50.4,60.8 50.4,53.4 46.8,51.6" fill="#2E4038" opacity="1"/><polygon points="18.9,35.3 52.5,52.1 52.5,40.9 18.9,24.1" fill="#2E4038" opacity="1"/><polygon points="77.1,39.8 52.5,52.1 52.5,40.9 77.1,28.6" fill="#223029" opacity="1"/><polygon points="18.9,35.3 18.9,24.1" fill="#243329" opacity="1"/><polygon points="20.6,36.2 20.6,25.0" fill="#243329" opacity="1"/><polygon points="22.3,37.0 22.3,25.8" fill="#243329" opacity="1"/><polygon points="23.9,37.9 23.9,26.7" fill="#243329" opacity="1"/><polygon points="25.6,38.7 25.6,27.5" fill="#243329" opacity="1"/><polygon points="27.3,39.5 27.3,28.3" fill="#243329" opacity="1"/><polygon points="29.0,40.4 29.0,29.2" fill="#243329" opacity="1"/><polygon points="30.7,41.2 30.7,30.0" fill="#243329" opacity="1"/><polygon points="32.3,42.1 32.3,30.9" fill="#243329" opacity="1"/><polygon points="34.0,42.9 34.0,31.7" fill="#243329" opacity="1"/><polygon points="21.4,34.6 27.0,37.4 27.0,29.6 21.4,26.8" fill="#F2EFE7" opacity="1"/><polygon points="21.8,34.5 26.6,36.9 26.6,29.8 21.8,27.4" fill="#233440" opacity="1"/><polygon points="28.5,38.2 34.1,41.0 34.1,33.1 28.5,30.3" fill="#F2EFE7" opacity="1"/><polygon points="28.9,38.0 33.7,40.4 33.7,33.3 28.9,30.9" fill="#233440" opacity="1"/><polygon points="40.8,44.3 48.7,48.2 48.7,40.4 40.8,36.5" fill="#F2EFE7" opacity="1"/><polygon points="41.2,44.2 48.3,47.7 48.3,40.6 41.2,37.1" fill="#233440" opacity="1"/><polygon points="43.3,11.0 79.9,29.3 66.3,30.7 29.7,12.4" fill="#55665E" opacity="1"/><polygon points="15.5,24.9 52.1,43.2 66.3,30.7 29.7,12.4" fill="#37474A" opacity="1"/><polygon points="52.1,43.2 66.3,30.7 79.9,29.3 79.9,29.3" fill="#2E3C3A" opacity="1"/><polygon points="29.7,12.4 66.3,30.7 66.3,30.0 29.7,11.7" fill="#6F8078" opacity="1"/><polygon points="38.5,58.3 47.6,62.9 51.2,61.1 42.0,56.5" fill="#CBB389" opacity="1"/><polygon points="38.5,59.1 47.6,63.7 47.6,62.9 38.5,58.3" fill="#B79A6A" opacity="1"/><polygon points="51.2,61.9 47.6,63.7 47.6,62.9 51.2,61.1" fill="#9A7F55" opacity="1"/><polygon points="38.7,58.4 47.6,62.9 47.6,62.6 38.7,58.1" fill="#8E7549" opacity="1"/><polygon points="37.7,50.5 47.6,55.5 51.2,53.0 41.3,48.1" fill="#4E605A" opacity="1"/><polygon points="38.3,58.0 39.0,58.4 39.0,50.6 38.3,50.3" fill="#5F7365" opacity="1"/><polygon points="47.5,62.6 48.1,62.9 48.1,55.2 47.5,54.9" fill="#5F7365" opacity="1"/></svg>
+          <button class="proj" type="button" role="tab" aria-selected="false" aria-controls="project-details" data-key="sosnovy" data-area="120" data-floors="2" data-pack="maxi">
+            <img class="proj__thumb" src="assets/projects/sosnovy-120.jpg" alt="Сосновый 120 — дом с двускатной кровлей" loading="lazy" width="360" height="240">
             <div><span class="tag">6 модулей</span><h3>Сосновый 120</h3><p class="meta">4 спальни, мастер-спальня, навес под авто, автономность</p></div>
             <div class="price">9,48 млн ₽<i>от, под ключ</i></div>
           </button>
+        </div>
+        <div class="project-showcase" id="project-details" role="tabpanel" aria-live="polite">
+          <div class="project-showcase__media"><img id="project-image" src="assets/projects/taezhny-45.jpg" alt="Таёжный 45 — модульный дом с крытой террасой"></div>
+          <div class="project-showcase__body">
+            <p class="project-showcase__eyebrow" id="project-label">45 м² · 1 спальня</p>
+            <h3 id="project-title">Таёжный 45</h3>
+            <p id="project-description">Компактный дом для дачи или гостевого участка: кухня-гостиная, отдельная спальня и крытая терраса.</p>
+            <dl class="project-facts">
+              <div><dt>Площадь</dt><dd id="project-area">45 м²</dd></div>
+              <div><dt>Модулей</dt><dd id="project-modules">4</dd></div>
+              <div><dt>Монтаж</dt><dd id="project-install">1 день</dd></div>
+              <div><dt>Цена от</dt><dd id="project-price">3,56 млн ₽</dd></div>
+            </dl>
+            <div class="project-actions"><button class="btn btn--dark" id="project-calc" type="button">Рассчитать этот дом ↗</button></div>
+          </div>
         </div>
         <p class="note" style="margin-top:12px">Все проекты — на сваях, с обвязкой под манипулятор. Сроки производства: 24–38 дней.</p>
       </div>
@@ -1223,21 +1262,56 @@ h3 { letter-spacing: -.02em; }
       setTimeout(function () { var n = $("name"); if (n) n.focus(); }, REDUCED ? 0 : 700);
     });
 
-    /* карточки проектов -> в калькулятор */
-    [].slice.call(document.querySelectorAll(".proj")).forEach(function (card) {
+    /* вкладки проектов + синхронизация с калькулятором */
+    var PROJECTS = {
+      taezhny: { title: "Таёжный 45", label: "45 м² · 1 спальня", image: "assets/projects/taezhny-45.jpg", alt: "Таёжный 45 — модульный дом с крытой террасой", description: "Компактный дом для дачи или гостевого участка: кухня-гостиная, отдельная спальня и крытая терраса.", area: "45 м²", modules: "4", install: "1 день", price: "3,56 млн ₽" },
+      kedrovy: { title: "Кедровый 68", label: "68 м² · 2 спальни", image: "assets/projects/kedrovy-68.jpg", alt: "Кедровый 68 — дом с просторной перголой", description: "Семейный дом с панорамным остеклением и перголой во всю длину фасада. Две спальни и общая кухня-гостиная.", area: "68 м²", modules: "4", install: "1 день", price: "5,37 млн ₽" },
+      elovy: { title: "Еловый 96", label: "96 м² · 3 спальни", image: "assets/projects/elovy-96.jpg", alt: "Еловый 96 — дом с большой террасой", description: "Просторный дом для постоянной жизни: три спальни, два санузла, объединённая гостиная и большая открытая терраса.", area: "96 м²", modules: "5", install: "2 дня", price: "7,58 млн ₽" },
+      sosnovy: { title: "Сосновый 120", label: "120 м² · 4 спальни", image: "assets/projects/sosnovy-120.jpg", alt: "Сосновый 120 — дом с двускатной кровлей", description: "Старшая модель с четырьмя спальнями, мастер-спальней и автономной инженерией. Теплый свет и двускатная кровля для загородной архитектуры.", area: "120 м²", modules: "6", install: "2 дня", price: "9,48 млн ₽" }
+    };
+    var projectCards = [].slice.call(document.querySelectorAll(".proj"));
+    function showProject(card) {
+      var p = PROJECTS[card.dataset.key];
+      if (!p) return;
+      projectCards.forEach(function (c) {
+        var active = c === card;
+        c.classList.toggle("sel", active);
+        c.setAttribute("aria-selected", String(active));
+        c.tabIndex = active ? 0 : -1;
+      });
+      $("project-image").src = p.image; $("project-image").alt = p.alt;
+      $("project-label").textContent = p.label; $("project-title").textContent = p.title;
+      $("project-description").textContent = p.description; $("project-area").textContent = p.area;
+      $("project-modules").textContent = p.modules; $("project-install").textContent = p.install;
+      $("project-price").textContent = p.price;
+    }
+    projectCards.forEach(function (card, index) {
       card.addEventListener("click", function () {
         state.area = +card.dataset.area;
         if (card.dataset.pack) state.pack = card.dataset.pack;
         [].slice.call(elF.children).forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.v === +card.dataset.floors)); });
         state.floors = +card.dataset.floors;
-        paint(); syncProjects();
-        document.getElementById("raschet").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "center" });
+        paint(); showProject(card);
+      });
+      card.addEventListener("keydown", function (e) {
+        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+        e.preventDefault();
+        var next = (index + (e.key === "ArrowRight" ? 1 : -1) + projectCards.length) % projectCards.length;
+        projectCards[next].focus(); projectCards[next].click();
       });
     });
+    var projectCalc = $("project-calc");
+    if (projectCalc) projectCalc.addEventListener("click", function () {
+      document.getElementById("raschet").scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "center" });
+    });
+    var initialProject = projectCards.filter(function (c) { return +c.dataset.area === state.area; })[0] || projectCards[0];
+    if (initialProject) showProject(initialProject);
   }
   function syncProjects() {
     [].slice.call(document.querySelectorAll(".proj")).forEach(function (c) {
-      c.classList.toggle("sel", +c.dataset.area === state.area);
+      var active = +c.dataset.area === state.area;
+      c.classList.toggle("sel", active);
+      c.setAttribute("aria-selected", String(active));
     });
   }
 
